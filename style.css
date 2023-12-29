@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Tektur&display=swap');
+
+
+body {
+    font-family: 'Tektur', sans-serif;
+}
+
+.clock {
+    max-width: 500px;
+    font-weight: 600;
+    min-height: 150px;
+    margin: 0 auto;
+    padding: 20px 10px;
+}
+
+.clock__title {
+    font-size: 70px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.second {
+    font-size: 50px;
+}
+
+.clock__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px -10px;
+}
+
+.clock__col {
+    flex: 1 1 50%;
+    text-align: center;
+    padding: 0 10px;
+}
+
+.clock__btn {
+    min-width: 100px;
+    width: 100%;
+    background-color: #fbad10;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 7px;
+    margin: 8px 0;
+    border-radius: 25px;
+    transition-duration: .3s;
+}
+
+.clock__btn:hover {
+    background-color: #ffc34b;
+    transition-duration: .3s;
+}
+
+
+
+.modal {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(167, 163, 255);
+    opacity: 0.95;
+}
+
+.none {
+    display: none;
+}
+
+.modal__item {
+    position: relative;
+    max-width: 600px;
+    height: 300px;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px;
+}
+
+.modal__col {
+    flex: 0 1 31%;
+    padding: 5px;
+}
+
+.modal__close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+
+
+@media (max-width: 500px) {
+    .clock__title {
+        font-size: 45px;
+    }
+    
+    .clock__title span {
+        font-size: 30px;
+    }
+}

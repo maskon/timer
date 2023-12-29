@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="style.css">
+    <title>Часы</title>
+</head>
+<body>
+    <div class="clock" id="clock">
+        <div class="clock__title" id="clock__title"><span id="hour">00</span>:<span id="minute">00</span>.<span class="second" id="second">00</span></div>
+        <button type="button" class="clock__btn" id="clock__timer">Задать таймер</button>
+        <div class="clock__item">
+           <div class="clock__col">
+                <button type="button" class="clock__btn" id="clock__start">Старт</button>
+            </div>
+            <div class="clock__col">
+                <button type="button" class="clock__btn" id="clock__clear">Сброс</button>
+            </div>
+        </div>  
+    </div>
+    
+    <div class="modal none" id="modal">
+            <div class="modal__item" id="modal__item">
+                <button type="button" class="modal__close" id="modal__close">Закрыть</button>
+                <div class="modal__col">
+                    <label for="input__hour">Часы</label>
+                    <input type="number" id="input__hour" placeholder="00">
+                </div>
+                <div class="modal__col">
+                    <label for="input__minute">Минуты</label>
+                    <input type="number" id="input__minute" placeholder="00">
+                </div>
+                <div class="modal__col">
+                    <label for="input__second">Секунды</label>
+                    <input type="number" id="input__second" placeholder="00">
+                </div>
+                <button type="button" class="clock__btn" id="modal__timer">Задать таймер</button>
+            </div>
+        </div>      
+    
+    <script src="app.js"></script>
+</body>
+</html>
