@@ -6,6 +6,10 @@ body {
     color:  rgb(60, 60, 60);
 }
 
+button {
+    cursor: pointer;
+}
+
 .clock {
     max-width: 500px;
     font-weight: 600;
@@ -88,6 +92,21 @@ body {
     flex: 0 1 31%;
     padding: 5px;
 }
+
+/*
+.modal__content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+*/
+
+/*
+.modal__col label {
+    flex: 1 1 auto;
+    height: 100%;
+}
+*/
 
 .modal__close {
     position: absolute;

@@ -84,7 +84,7 @@ timer.addEventListener('click', () => {
         }
         
         if (Number(inputSecond.value) < 59) {
-            inputSecond.value = inputSecond.value
+            inputSecond.value = ''
             labelSecond.innerHTML = 'Секунды'
             labelSecond.style.color = 'rgb(60, 60, 60)'
         }
