@@ -22,9 +22,9 @@ timer.addEventListener('click', () => {
     
     modal.classList.remove('none')
     
-    inputHour.value = ''
-    inputMinute.value = ''
-    inputSecond.value = ''
+//    inputHour.value = ''
+//    inputMinute.value = ''
+//    inputSecond.value = ''
     
     if (close) {
         close.addEventListener('click', () => {
@@ -38,10 +38,7 @@ timer.addEventListener('click', () => {
         }   
     })
     
-    inputHour.addEventListener('input', function () {     
-//        if (Number(inputHour.value) > 59) {
-//            inputHour.value = 59
-//        }
+    inputHour.addEventListener('input', function () {
         if (Number(inputHour.value) < 10) {
             inputHour.value = '0' + inputHour.value
         } 
@@ -49,7 +46,7 @@ timer.addEventListener('click', () => {
             inputHour.value = Number(inputHour.value)
         }
     })
-    
+
     inputMinute.addEventListener('input', function () {
         if (Number(inputMinute.value) > 59) {
             inputMinute.value = 59
@@ -74,6 +71,8 @@ timer.addEventListener('click', () => {
         if (inputMinute.value === '00') {
             inputMinute.value = ''
         }
+        
+        console.log()
     })
     
     inputSecond.addEventListener('input', function () { 
@@ -84,7 +83,7 @@ timer.addEventListener('click', () => {
         }
         
         if (Number(inputSecond.value) < 59) {
-            inputSecond.value = ''
+            inputSecond.value = inputSecond.value
             labelSecond.innerHTML = 'Секунды'
             labelSecond.style.color = 'rgb(60, 60, 60)'
         }
@@ -106,9 +105,25 @@ timer.addEventListener('click', () => {
         
         modal.classList.add('none')
         
-        hour.innerHTML = inputHour.value
-        minute.innerHTML = inputMinute.value
-        second.innerHTML = inputSecond.value
+        if (inputHour.value) {
+            hour.innerHTML = inputHour.value
+        } else {
+            hour.innerHTML = '00'
+        }
+        
+        if (inputMinute.value) {
+            minute.innerHTML = inputMinute.value
+        } else {
+            minute.innerHTML = '00'
+        }
+         
+        if (inputSecond.value) {
+            second.innerHTML = inputSecond.value
+        } else {
+            second.innerHTML = '00'
+        }
+        
+        
         
         timer.innerHTML = 'Новый таймер'
     })
@@ -117,9 +132,13 @@ timer.addEventListener('click', () => {
     let intervalId
     
     start.addEventListener('click', () => {
+        
         intervalId = setInterval(function() {
             
-            second.innerHTML = Number(second.innerHTML) - 1 
+            if (inputSecond.value === '' && inputMinute.value === '' && inputHour.value === '') {
+                clearInterval(intervalId)
+            } else {
+                second.innerHTML = Number(second.innerHTML) - 1 
             
             if (Number(second.innerHTML) < 10 && Number(second.innerHTML) >= 0) {
                 second.innerHTML = '0' + Number(second.innerHTML)
@@ -156,16 +175,25 @@ timer.addEventListener('click', () => {
                 
                 timer.innerHTML = 'Задать таймер'
             }
+            }
+            
+            
             
         }, 1000)
     })
     
     stop.addEventListener('click', function () {  
-        clearInterval(intervalId)
+        
         
         hour.innerHTML = '00'
         minute.innerHTML = '00'
         second.innerHTML = '00'
+        
+        inputSecond.value = ''
+        inputMinute.value = ''
+        inputHour.value = ''
+        
+        clearInterval(intervalId)
         
         timer.innerHTML = 'Задать таймер'
     })
