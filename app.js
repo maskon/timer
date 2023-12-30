@@ -17,6 +17,9 @@ timer.addEventListener('click', () => {
     const inputMinute = document.querySelector('#input__minute')
     const inputSecond = document.querySelector('#input__second')
     
+    const labelMinute = document.querySelector('#label__minute')
+    const labelSecond = document.querySelector('#label__second')
+    
     modal.classList.remove('none')
     
     inputHour.value = ''
@@ -36,20 +39,66 @@ timer.addEventListener('click', () => {
     })
     
     inputHour.addEventListener('input', function () {     
-        if (Number(inputHour.value) > 59) {
-            inputHour.value = '00'
+//        if (Number(inputHour.value) > 59) {
+//            inputHour.value = 59
+//        }
+        if (Number(inputHour.value) < 10) {
+            inputHour.value = '0' + inputHour.value
+        } 
+        else if (Number(inputHour.value) >= 10) {
+            inputHour.value = Number(inputHour.value)
         }
     })
     
     inputMinute.addEventListener('input', function () {
         if (Number(inputMinute.value) > 59) {
-            inputMinute.value = '00'
+            inputMinute.value = 59
+            labelMinute.innerHTML = 'Максимальное кол-во минут : 59'
+            labelMinute.style.color = 'red'
+        }
+        
+        if (Number(inputMinute.value) < 59) {
+            inputMinute.value = inputMinute.value
+            labelMinute.innerHTML = 'Минуты'
+            labelMinute.style.color = 'rgb(60, 60, 60)'
+        }
+        
+        if (Number(inputMinute.value) < 10) {
+            inputMinute.value = '0' + inputMinute.value
+        }
+        
+        else if (Number(inputMinute.value) >= 10) {
+            inputMinute.value = Number(inputMinute.value)
+        }
+        
+        if (inputMinute.value === '00') {
+            inputMinute.value = ''
         }
     })
     
-    inputSecond.addEventListener('input', function () {
+    inputSecond.addEventListener('input', function () { 
         if (Number(inputSecond.value) > 59) {
-            inputSecond.value = '00'
+            inputSecond.value = 59
+            labelSecond.innerHTML = 'Максимальное кол-во секунд : 59'
+            labelSecond.style.color = 'red'
+        }
+        
+        if (Number(inputSecond.value) < 59) {
+            inputSecond.value = inputSecond.value
+            labelSecond.innerHTML = 'Секунды'
+            labelSecond.style.color = 'rgb(60, 60, 60)'
+        }
+        
+        if (Number(inputSecond.value) < 10) {
+            inputSecond.value = '0' + inputSecond.value
+        }
+        
+        else if (Number(inputSecond.value) >= 10) {
+            inputSecond.value = Number(inputSecond.value)
+        }
+        
+        if (inputSecond.value === '00') {
+            inputSecond.value = ''
         }
     })
 

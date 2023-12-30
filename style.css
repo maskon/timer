@@ -3,6 +3,7 @@
 
 body {
     font-family: 'Tektur', sans-serif;
+    color:  rgb(60, 60, 60);
 }
 
 .clock {
@@ -74,7 +75,7 @@ body {
 .modal__item {
     position: relative;
     max-width: 600px;
-    height: 300px;
+    min-height: 300px;
     margin: 20px auto;
     display: flex;
     flex-wrap: wrap;
