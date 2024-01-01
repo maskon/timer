@@ -12,15 +12,16 @@ const modal = document.querySelector('#modal')
 const close = document.querySelector('#modal__close')
 const modalTimer = document.querySelector('#modal__timer')
 
+const inputHour = document.querySelector('#input__hour')
+const inputMinute = document.querySelector('#input__minute')
+const inputSecond = document.querySelector('#input__second')
+    
+const labelMinute = document.querySelector('#label__minute')
+const labelSecond = document.querySelector('#label__second')
+
 let intervalId = null
 
 timer.addEventListener('click', () => {
-    const inputHour = document.querySelector('#input__hour')
-    const inputMinute = document.querySelector('#input__minute')
-    const inputSecond = document.querySelector('#input__second')
-    
-    const labelMinute = document.querySelector('#label__minute')
-    const labelSecond = document.querySelector('#label__second')
     
     modal.classList.remove('none')
     
@@ -48,8 +49,7 @@ timer.addEventListener('click', () => {
         else if (Number(inputHour.value) >= 10) {
             inputHour.value = Number(inputHour.value)
         }
-        
-        
+           
         if (inputHour.value.length > 2) {
             inputHour.value = inputHour.value.slice(-2)
         }
@@ -79,8 +79,7 @@ timer.addEventListener('click', () => {
         
         if (inputMinute.value === '00') {
             inputMinute.value = ''
-        }
-        
+        }   
         
         if (inputMinute.value.length > 2) {
             inputMinute.value = inputMinute.value.slice(-2)
@@ -112,8 +111,7 @@ timer.addEventListener('click', () => {
         if (inputSecond.value === '00') {
             inputSecond.value = ''
         }
-        
-        
+          
         if (inputSecond.value.length > 2) {
             inputSecond.value = inputSecond.value.slice(-2)
         }
@@ -143,18 +141,19 @@ timer.addEventListener('click', () => {
         }
 
         timer.innerHTML = 'Новый таймер'
-    })
-    
-    
-    start.addEventListener('click', () => {
+    })  
+})
+
+start.addEventListener('click', () => {
         
-        clearInterval(intervalId)
-        intervalId = null
-        
+    clearInterval(intervalId)
+
+    if (start.textContent === 'Старт') {
+            
         if (inputSecond.value !== '' || inputMinute.value !== '' || inputHour.value !== '') {
             
             intervalId = setInterval(function() {
-            
+
                 if (inputSecond.value === '' && inputMinute.value === '' && inputHour.value === '') {
                     clearInterval(intervalId)
                 } else {
@@ -163,7 +162,6 @@ timer.addEventListener('click', () => {
                     if (Number(second.innerHTML) < 10 && Number(second.innerHTML) >= 0) {
                         second.innerHTML = '0' + Number(second.innerHTML)
                     }
-
 
                     if (Number(second.innerHTML) < 0) {
                         second.innerHTML = 59
@@ -174,7 +172,6 @@ timer.addEventListener('click', () => {
                             minute.innerHTML = '0' + Number(minute.innerHTML)
                         }
                     }
-
 
                     if (Number(minute.innerHTML < 0)) {
                         second.innerHTML = 59
@@ -194,31 +191,32 @@ timer.addEventListener('click', () => {
                         second.innerHTML = '00'
 
                         timer.innerHTML = 'Задать таймер'
+                        start.innerHTML = 'Старт'
                     }
                 }
 
             }, 1000)
+                
+            start.innerHTML = 'Пауза'
         }
+    }
         
-        start.innerHTML = 'Пауза'
-    })
-    
-    stop.addEventListener('click', function () {  
-        
-        
-        hour.innerHTML = '00'
-        minute.innerHTML = '00'
-        second.innerHTML = '00'
-        
-        inputSecond.value = ''
-        inputMinute.value = ''
-        inputHour.value = ''
-        
+    else if (start.textContent === 'Пауза') {
         clearInterval(intervalId)
-        
-        timer.innerHTML = 'Задать таймер'
-    })
+        start.innerHTML = 'Старт'
+    }     
 })
-    
+
+stop.addEventListener('click', function () {
+        
+    clearInterval(intervalId)
+  
+    hour.innerHTML = '00'
+    minute.innerHTML = '00'
+    second.innerHTML = '00'
+ 
+    timer.innerHTML = 'Задать таймер'
+    start.innerHTML = 'Старт'
+})    
     
     

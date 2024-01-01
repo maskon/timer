@@ -70,6 +70,7 @@ button {
     height: 100%;
     background-color: rgb(167, 163, 255);
     opacity: 0.95;
+    padding: 0 10px;
 }
 
 .none {
@@ -79,7 +80,7 @@ button {
 .modal__item {
     position: relative;
     max-width: 600px;
-    min-height: 300px;
+    min-height: 220px;
     margin: 20px auto;
     display: flex;
     flex-wrap: wrap;
@@ -92,21 +93,6 @@ button {
     flex: 0 1 31%;
     padding: 5px;
 }
-
-/*
-.modal__content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-*/
-
-/*
-.modal__col label {
-    flex: 1 1 auto;
-    height: 100%;
-}
-*/
 
 .modal__close {
     position: absolute;
