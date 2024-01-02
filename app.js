@@ -157,6 +157,11 @@ timer.addEventListener('click', () => {
         }
 
         timer.innerHTML = 'Новый таймер'
+        
+        if (start.textContent === 'Пауза') {
+            clearInterval(intervalId)
+            start.innerHTML = 'Старт'
+        }
     })  
 })
 
