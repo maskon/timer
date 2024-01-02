@@ -87,6 +87,9 @@ button {
     align-items: center;
     background-color: #fff;
     padding: 10px;
+    
+    transform: rotateX(90deg);
+    transition-duration: 1s;
 }
 
 .modal__col {

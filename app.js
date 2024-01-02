@@ -9,6 +9,7 @@ const start = document.querySelector('#clock__start')
 const stop = document.querySelector('#clock__clear')
 
 const modal = document.querySelector('#modal')
+const modalItem = document.querySelector('#modal__item')
 const close = document.querySelector('#modal__close')
 const modalTimer = document.querySelector('#modal__timer')
 
@@ -25,19 +26,31 @@ timer.addEventListener('click', () => {
     
     modal.classList.remove('none')
     
+    setTimeout(modalTransform, 200)
+    
+    function modalTransform() {
+        modalItem.style.transform =  'rotateX(0deg)'
+    }
+    
+    function modalTransform2() {   
+        modal.classList.add('none')
+    }
+    
     inputHour.value = ''
     inputMinute.value = ''
     inputSecond.value = ''
     
     if (close) {
         close.addEventListener('click', () => {
-            modal.classList.add('none')
+            modalItem.style.transform =  'rotateX(90deg)'
+            setTimeout(modalTransform2, 1000)
         })
     }
     
     body.addEventListener('click', function (e) {
         if (e.target === modal) {
-            modal.classList.add('none')
+            modalItem.style.transform =  'rotateX(90deg)'
+            setTimeout(modalTransform2, 1000)
         }   
     })
     
@@ -120,7 +133,10 @@ timer.addEventListener('click', () => {
 
     modalTimer.addEventListener('click', function () {
         
-        modal.classList.add('none')
+        modalItem.style.transform =  'rotateX(90deg)'
+        setTimeout(modalTransform2, 1000)
+        
+        
         
         if (inputHour.value) {
             hour.innerHTML = inputHour.value
